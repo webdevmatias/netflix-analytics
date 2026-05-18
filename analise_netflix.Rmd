@@ -1,0 +1,40 @@
+---
+title: "Análise Exploratória Netflix"
+author: "Lucas Matias"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introdução
+
+Texto explicando o problema.
+
+```{r}
+# código aqui
+```
+
+# Preparação dos Dados
+
+```{r}
+library(tidyverse)
+
+netflix <- read_csv(
+  "C:/Users/Matias/Documents/ANALISE_DE_DADOS/netflix_titles.csv"
+)
+```
+
+# Limpeza
+
+```{r}
+# tratamento
+```
+
+# Análise Exploratória
+
+```{r}
+# gráficos
+```
+
+# Conclusão
+
+Texto final.
