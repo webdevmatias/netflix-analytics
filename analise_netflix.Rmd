@@ -1,40 +1,306 @@
 ---
-title: "Análise Exploratória Netflix"
-author: "Lucas Matias"
-date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: false
+    code_folding: show
+    self_contained: true
 ---
 
-# Introdução
+```{=html}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap');
 
-Texto explicando o problema.
+* { box-sizing: border-box; }
 
-```{r}
-# código aqui
+body {
+  background: #0f0f0f !important;
+  color: #e8e8e8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.main-container {
+  max-width: 1060px;
+  padding: 0 32px 80px;
+}
+
+/* HEADER */
+/* HEADER */
+.report-header {
+  padding: 64px 0 36px;
+  margin-bottom: 28px;
+
+  text-align: left;
+}
+
+.report-header .label {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #E50914;
+
+  text-align: left;
+}
+
+.report-header h1 {
+  margin: 0 0 14px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 58px;
+  line-height: 1.05;
+  font-weight: 400;
+  color: #fff;
+}
+
+.logo-netflix {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #E50914;
+
+  text-shadow:
+    2px 0 0 #b20710,
+    4px 0 8px rgba(0,0,0,.45);
+}
+
+.report-header .sub,
+.report-header .meta {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  text-align: left !important;
+  text-indent: 0 !important;
+}
+
+.report-header .sub {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #888;
+}
+
+.report-header .meta {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #676666;
+}
+
+/* TABSET */
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin-top: 22px;
+  border-bottom: 1px solid #1e1e1e !important;
+}
+
+.nav-tabs > li {
+  float: none !important;
+}
+
+.nav-tabs > li > a {
+  background: transparent !important;
+  color: #666 !important;
+  border: none !important;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .4px;
+
+  padding: 16px 20px;
+}
+
+.nav-tabs > li > a:hover {
+  color: #ddd !important;
+  background: transparent !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {
+  color: #E50914 !important;
+  border: none !important;
+  border-bottom: 2px solid #E50914 !important;
+  background: transparent !important;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px !important;
+  color: #ffffff !important;
+  margin-top: 26px !important;
+}
+
+h3 {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #E50914 !important;
+  margin-top: 40px !important;
+}
+
+p {
+  color: #bbb;
+  font-size: 17px;
+  margin-bottom: 18px;
+
+  text-align: justify;
+  text-indent: 2em;
+}
+
+blockquote {
+  border-left: 3px solid #E50914 !important;
+  padding: 14px 24px !important;
+  margin: 24px 0 !important;
+  background: #191919 !important;
+  border-radius: 0 6px 6px 0;
+  color: #ccc !important;
+}
+
+/* CARDS */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #181818;
+  border: 1px solid #252525;
+  border-radius: 10px;
+  padding: 22px 18px;
+
+  text-align: center;
+}
+
+.metric-card .num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: #fff;
+}
+
+.metric-card .desc {
+  font-size: 16px;
+  color: #717171;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th {
+  background: #1a1a1a !important;
+  color: #E50914 !important;
+}
+
+td {
+  color: #ccc !important;
+  background: transparent !important;
+}
+
+pre {
+  background: #161616 !important;
+  border: 1px solid #222 !important;
+  border-radius: 8px;
+  color: #e8e8e8 !important;
+}
+</style>
+
+<div class="report-header">
+  <h1>
+    <span class="logo-netflix">NETFLIX</span> em Números
+  </h1>
+
+  <p class="sub">
+    Crescimento, geografia e padrões do catálogo, antes e durante a pandemia de COVID-19.
+  </p>
+
+  <p class="meta">Lucas Matias Da Silva · 31/05/2026</p>
+</div>
 ```
 
-# Preparação dos Dados
+# {.tabset}
 
-```{r}
-library(tidyverse)
+## Introdução
 
-netflix <- read_csv(
-  "C:/Users/Matias/Documents/ANALISE_DE_DADOS/netflix_titles.csv"
-)
+```{=html}
+<div class="metric-row">
+  <div class="metric-card">
+    <span class="num">8.807</span>
+    <span class="desc">títulos analisados</span>
+  </div>
+
+  <div class="metric-card">
+    <span class="num">2008 – 2021</span>
+    <span class="desc">período coberto</span>
+  </div>
+
+  <div class="metric-card">
+    <span class="num">+ 100</span>
+    <span class="desc">países representados</span>
+  </div>
+</div>
 ```
 
-# Limpeza
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
 
-```{r}
-# tratamento
-```
+---
 
-# Análise Exploratória
+## Preparação
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
 
-```{r}
-# gráficos
-```
+---
 
-# Conclusão
+## Visão Geral
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
 
-Texto final.
+
+---
+
+## Crescimento
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+
+
+---
+
+## Países
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+
+
+---
+
+## Gêneros
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+
+
+---
+
+## Brasil
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+
+
+---
+
+## Conclusões
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
