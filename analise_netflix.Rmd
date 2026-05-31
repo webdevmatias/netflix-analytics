@@ -29,11 +29,9 @@ body {
 }
 
 /* HEADER */
-/* HEADER */
 .report-header {
   padding: 64px 0 36px;
   margin-bottom: 28px;
-
   text-align: left;
 }
 
@@ -44,7 +42,6 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #E50914;
-
   text-align: left;
 }
 
@@ -62,10 +59,7 @@ body {
   font-weight: 800;
   letter-spacing: -1px;
   color: #E50914;
-
-  text-shadow:
-    2px 0 0 #b20710,
-    4px 0 8px rgba(0,0,0,.45);
+  text-shadow: 2px 0 0 #b20710, 4px 0 8px rgba(0,0,0,.45);
 }
 
 .report-header .sub,
@@ -73,7 +67,6 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-
   text-align: left !important;
   text-indent: 0 !important;
 }
@@ -91,13 +84,12 @@ body {
   color: #676666;
 }
 
-/* TABSET */
+/* TABSET PRINCIPAL */
 .nav-tabs {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
   margin-top: 22px;
   border-bottom: 1px solid #1e1e1e !important;
 }
@@ -110,11 +102,9 @@ body {
   background: transparent !important;
   color: #666 !important;
   border: none !important;
-
   font-size: 14px;
   font-weight: 600;
   letter-spacing: .4px;
-
   padding: 16px 20px;
 }
 
@@ -131,10 +121,31 @@ body {
   background: transparent !important;
 }
 
-/* TYPOGRAPHY */
-h1, h2, h3 {
-  font-weight: 400;
+/* TABSET INTERNO (subabas) */
+.nav-pills > li > a {
+  background: #1a1a1a !important;
+  color: #888 !important;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  margin-right: 6px;
+  margin-bottom: 6px;
 }
+
+.nav-pills > li > a:hover {
+  background: #252525 !important;
+  color: #ccc !important;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover {
+  background: #E50914 !important;
+  color: #fff !important;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4 { font-weight: 400; }
 
 h2 {
   font-family: 'DM Serif Display', serif;
@@ -148,13 +159,23 @@ h3 {
   font-weight: 600 !important;
   color: #E50914 !important;
   margin-top: 40px !important;
+  margin-bottom: 8px !important;
+}
+
+h4 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #aaa !important;
+  margin-top: 28px !important;
+  margin-bottom: 6px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 p {
   color: #bbb;
   font-size: 17px;
   margin-bottom: 18px;
-
   text-align: justify;
   text-indent: 2em;
 }
@@ -181,12 +202,10 @@ blockquote {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background: #181818;
   border: 1px solid #252525;
   border-radius: 10px;
   padding: 22px 18px;
-
   text-align: center;
 }
 
@@ -201,41 +220,41 @@ blockquote {
   color: #717171;
 }
 
-/* TABLE */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
+/* TABELA DICIONARIO */
+.dict-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.dict-table th { background: #1a1a1a; color: #E50914; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; padding: 11px 14px; border-bottom: 2px solid #2a2a2a; text-align: left; }
+.dict-table td { padding: 10px 14px; border-bottom: 1px solid #1e1e1e; color: #ccc; vertical-align: top; }
+.dict-table td:first-child { color: #fff; font-weight: 600; font-family: monospace; font-size: 13px; white-space: nowrap; }
+.dict-table td:nth-child(2) { color: #888; font-size: 13px; font-style: italic; }
+.dict-table tr:last-child td { border-bottom: none; }
+.dict-table tr:hover td { background: #191919; }
 
-th {
-  background: #1a1a1a !important;
-  color: #E50914 !important;
-}
+/* FINDING LIST */
+.finding-list { list-style: none; padding: 0; margin: 20px 0; }
+.finding-list li { padding: 14px 0 14px 26px; border-bottom: 1px solid #1e1e1e; color: #bbb; position: relative; font-size: 16px; }
+.finding-list li::before { content: ''; position: absolute; left: 0; top: 22px; width: 7px; height: 7px; background: #E50914; border-radius: 50%; }
+.finding-list li:last-child { border-bottom: none; }
 
-td {
-  color: #ccc !important;
-  background: transparent !important;
-}
+/* DT TABLES */
+table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+th { background: #1a1a1a !important; color: #E50914 !important; }
+td { color: #ccc !important; background: transparent !important; }
 
-pre {
-  background: #161616 !important;
-  border: 1px solid #222 !important;
-  border-radius: 8px;
-  color: #e8e8e8 !important;
-}
+/* CODE */
+pre { background: #161616 !important; border: 1px solid #222 !important; border-radius: 8px; color: #e8e8e8 !important; }
+code { color: #e8e8e8 !important; background: transparent !important; }
+
+hr { border: none; border-top: 1px solid #1e1e1e; margin: 32px 0; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0f0f0f; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 </style>
 
 <div class="report-header">
-  <h1>
-    <span class="logo-netflix">NETFLIX</span> em Números
-  </h1>
-
-  <p class="sub">
-    Crescimento, geografia e padrões do catálogo, antes e durante a pandemia de COVID-19.
-  </p>
-
-  <p class="meta">Lucas Matias Da Silva · 31/05/2026</p>
+  <h1><span class="logo-netflix">NETFLIX</span> em Números</h1>
+  <p class="sub">Crescimento, geografia e padrões do catálogo, antes e durante a pandemia de COVID-19.</p>
+  <p class="meta">Lucas Matias Da Silva &nbsp;·&nbsp; 31/05/2026</p>
 </div>
 ```
 
@@ -249,12 +268,10 @@ pre {
     <span class="num">8.807</span>
     <span class="desc">títulos analisados</span>
   </div>
-
   <div class="metric-card">
     <span class="num">2008 – 2021</span>
     <span class="desc">período coberto</span>
   </div>
-
   <div class="metric-card">
     <span class="num">+ 100</span>
     <span class="desc">países representados</span>
@@ -262,46 +279,733 @@ pre {
 </div>
 ```
 
-A Netflix é uma das principais plataformas de streaming do mundo, com crescimento acelerado ao longo dos anos e forte expansão internacional. Seu catálogo reflete mudanças na indústria do entretenimento, incluindo globalização da produção audiovisual e aumento do consumo de conteúdo sob demanda.
+### Declaração do problema
 
-Esse projeto busca analisar a evolução do catálogo da Netflix entre 2008 e 2021, com foco em identificar padrões de crescimento, distribuição geográfica e composição de conteúdo. O interesse na análise está no fato de que o catálogo de uma plataforma desse porte não cresce de forma aleatória, mas sim refletindo decisões estratégicas de mercado, preferências de consumo e eventos globais como a pandemia da COVID-19.
+A Netflix é uma das principais plataformas de streaming do mundo, com crescimento acelerado ao longo dos anos e forte expansão internacional. Seu catálogo reflete mudanças na indústria do entretenimento, incluindo a globalização da produção audiovisual e o aumento do consumo de conteúdo sob demanda.
 
-Para isso, será utilizado o conjunto de dados Netflix Movies and TV Shows, disponível na plataforma Kaggle, tendo como base o arquivo netflix_titles.csv (<a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank">link do dataset</a>). A base contém informações sobre títulos disponíveis na plataforma, como tipo de conteúdo, país de origem, data de adição, duração e classificação indicativa.
+Este projeto busca analisar a evolução do catálogo da Netflix entre 2008 e 2021, com foco em identificar padrões de crescimento, distribuição geográfica e composição de conteúdo. O interesse na análise está no fato de que o catálogo de uma plataforma desse porte não cresce de forma aleatória, mas sim refletindo decisões estratégicas de mercado, preferências de consumo e eventos globais — como a pandemia da COVID-19. Uma questão central desta análise é: a pandemia de 2020 de fato acelerou a expansão do catálogo, como seria esperado dado o aumento do consumo em casa?
 
-A abordagem do trabalho envolve análise exploratória de dados, com etapas de limpeza, transformação e criação de variáveis derivadas. Além disso, serão utilizados recursos de visualização estatística e análise temporal para identificar tendências e padrões relevantes no comportamento do catálogo ao longo do tempo.
+### Abordagem e metodologia
 
-Os resultados desta análise podem ser úteis para compreender como plataformas de streaming estruturam seus catálogos globalmente, permitindo identificar quais tipos de conteúdo são priorizados, como diferentes países participam dessa produção e como eventos externos, como a pandemia, influenciam a dinâmica de expansão do catálogo.
+Para responder a essa e outras questões, será utilizado o conjunto de dados *Netflix Movies and TV Shows*, disponível na plataforma Kaggle ([link do dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows)), tendo como base o arquivo `netflix_titles.csv`. A base contém informações sobre títulos disponíveis na plataforma, como tipo de conteúdo, país de origem, data de adição, duração e classificação indicativa.
 
+A abordagem envolve análise exploratória de dados, com etapas de limpeza, transformação e criação de variáveis derivadas. Serão utilizados recursos de visualização estatística e análise temporal para identificar tendências e padrões relevantes no comportamento do catálogo ao longo do tempo. A análise segue quatro eixos principais:
 
----
+> **Crescimento temporal** — quantos títulos foram adicionados a cada ano, com destaque para o período 2018–2021 e o impacto da pandemia.
+>
+> **Distribuição geográfica** — quais países concentram a produção e como essa distribuição mudou ao longo do tempo.
+>
+> **Composição do catálogo** — proporção entre filmes e séries, gêneros dominantes e classificação indicativa por público.
+>
+> **Recorte brasileiro** — presença e crescimento do conteúdo nacional dentro da plataforma global.
 
-## Requisitos  
+### Utilidade da análise
 
----
-
-## Importação e Preparação 
-
----
-
-
-## Limpeza  
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
-
+Os resultados desta análise podem ser úteis para compreender como plataformas de streaming estruturam seus catálogos globalmente, permitindo identificar quais tipos de conteúdo são priorizados, como diferentes países participam dessa produção e como eventos externos influenciam a dinâmica de expansão do catálogo. Para produtores e realizadores, a análise aponta quais gêneros e mercados recebem mais espaço. Para pesquisadores de mídia, oferece evidências sobre estratégias de internacionalização de conteúdo.
 
 ---
 
-## Subconjuntos 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+## Requisitos
 
+### Pacotes utilizados
+
+Os pacotes a seguir são necessários para reproduzir a análise sem erros. Todos devem ser carregados antes da execução dos demais blocos de código.
+
+```{=html}
+<table class="dict-table">
+  <thead>
+    <tr><th>Pacote</th><th>Tipo</th><th>Finalidade</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>tidyverse</td><td>meta-pacote</td><td>Instalação e carregamento conjunto de pacotes essenciais para manipulação e visualização de dados (inclui dplyr, ggplot2, tidyr, readr, entre outros)</td></tr>
+    <tr><td>lubridate</td><td>datas</td><td>Conversão de strings de texto em objetos de data e extração de componentes como ano e mês</td></tr>
+    <tr><td>plotly</td><td>visualização</td><td>Criação de gráficos interativos com zoom, tooltip e filtros por clique na legenda</td></tr>
+    <tr><td>DT</td><td>tabelas</td><td>Renderização de tabelas HTML interativas com busca, ordenação e paginação</td></tr>
+    <tr><td>stringr</td><td>texto</td><td>Manipulação de strings, limpeza de espaços e separação de valores múltiplos em colunas</td></tr>
+    <tr><td>scales</td><td>formatação</td><td>Formatação de eixos e rótulos em gráficos, como separadores de milhar e porcentagens</td></tr>
+    <tr><td>knitr</td><td>relatório</td><td>Geração dinâmica do relatório e renderização de tabelas estáticas com kable()</td></tr>
+  </tbody>
+</table>
+```
+
+```{r pacotes, message=FALSE, warning=FALSE}
+library(tidyverse)   # manipulação e visualização de dados
+library(lubridate)   # conversão e extração de componentes de datas
+library(plotly)      # gráficos interativos
+library(DT)          # tabelas interativas com busca e ordenação
+library(stringr)     # manipulação de texto e expressões regulares
+library(scales)      # formatação de eixos e rótulos nos gráficos
+library(knitr)       # geração do relatório e tabelas estáticas
+```
 
 ---
 
-## Visualizações  
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+## Importação e Preparação
 
+### Fonte dos dados
+
+Os dados foram obtidos do Kaggle: [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows), compilado por Shivam Bansal e atualizado em 2021. O conjunto contém 8.807 linhas e 12 colunas, com uma linha por título disponível na plataforma no momento da coleta.
+
+As colunas originais são: `show_id`, `type`, `title`, `director`, `cast`, `country`, `date_added`, `release_year`, `rating`, `duration`, `listed_in` e `description`. Algumas peculiaridades dos dados brutos:
+
+- `date_added` está em formato textual americano (`"September 25, 2021"`), exigindo conversão explícita para data.
+- `country` e `listed_in` podem conter múltiplos valores separados por vírgula em uma única célula.
+- `rating` usa nomenclatura americana (TV-MA, TV-14, PG-13), que precisa ser traduzida para classificação por público.
+- Valores ausentes ocorrem em `director` (30%), `cast` (10%), `country` (10%) e `date_added` (1%).
+
+### Importação
+
+```{r importacao, message=FALSE, warning=FALSE}
+netflix <- read_csv("./data/netflix_titles.csv")
+
+# Verificar estrutura inicial antes de qualquer transformação
+glimpse(netflix)
+```
+
+### Dicionário de dados
+
+```{=html}
+<table class="dict-table">
+  <thead>
+    <tr><th>Variável</th><th>Tipo</th><th>Descrição</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>show_id</td><td>character</td><td>Identificador único de cada título</td></tr>
+    <tr><td>type</td><td>character</td><td>Tipo de conteúdo: "Movie" (filme) ou "TV Show" (série)</td></tr>
+    <tr><td>title</td><td>character</td><td>Nome do título</td></tr>
+    <tr><td>director</td><td>character</td><td>Nome do diretor (pode estar ausente)</td></tr>
+    <tr><td>cast</td><td>character</td><td>Elenco principal separado por vírgula (pode estar ausente)</td></tr>
+    <tr><td>country</td><td>character</td><td>País de produção — pode conter múltiplos valores separados por vírgula</td></tr>
+    <tr><td>date_added</td><td>character → Date</td><td>Data em que o título foi adicionado ao catálogo (texto no original)</td></tr>
+    <tr><td>release_year</td><td>integer</td><td>Ano de lançamento original do título</td></tr>
+    <tr><td>rating</td><td>character</td><td>Classificação indicativa no padrão americano (TV-MA, PG-13, R, etc.)</td></tr>
+    <tr><td>duration</td><td>character</td><td>Duração em minutos (filmes) ou número de temporadas (séries)</td></tr>
+    <tr><td>listed_in</td><td>character</td><td>Gêneros do título — pode conter múltiplos valores separados por vírgula</td></tr>
+    <tr><td>description</td><td>character</td><td>Sinopse do título</td></tr>
+  </tbody>
+</table>
+```
+
+### Amostra dos dados brutos
+
+```{r amostra_bruta}
+netflix %>%
+  select(type, title, country, date_added, rating, listed_in) %>%
+  head(200) %>%
+  datatable(
+    options = list(
+      pageLength = 10,
+      scrollX    = TRUE,
+      language   = list(
+        search   = "Buscar:",
+        info     = "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        paginate = list(`next` = "Próx.", previous = "Ant.")
+      )
+    ),
+    rownames = FALSE,
+    colnames = c("Tipo", "Título", "País", "Adicionado em", "Rating", "Gêneros")
+  )
+```
+
+---
+
+## Limpeza
+
+### Etapas de transformação
+
+As transformações abaixo seguem uma lógica sequencial: primeiro convertemos tipos de dados, depois padronizamos texto, e por último criamos variáveis derivadas. Cada etapa é justificada nos comentários do código.
+
+```{r limpeza}
+netflix <- netflix %>%
+  mutate(
+    # date_added estava como texto no formato "Month DD, YYYY" (padrão americano)
+    # mdy() do lubridate interpreta esse formato e converte para Date
+    date_added = mdy(date_added),
+
+    # Extraímos ano e mês para facilitar análises temporais sem repetir o parse
+    year_added  = year(date_added),
+    month_added = month(date_added, label = TRUE, abbr = TRUE),
+
+    # duration mistura "90 min" (filmes) e "2 Seasons" (séries) na mesma coluna
+    # parse_number() extrai apenas o número, ignorando o sufixo textual
+    duration_value = parse_number(duration),
+
+    # country e listed_in têm espaços extras ao redor das vírgulas
+    # str_trim() remove espaços no início e fim de cada string
+    listed_in = str_trim(listed_in),
+    country   = str_trim(country),
+
+    # rating usa siglas americanas pouco intuitivas para leitores brasileiros
+    # criamos audience para agrupar em categorias de público reconhecíveis
+    audience = case_when(
+      rating %in% c("TV-Y", "TV-Y7", "G")     ~ "Infantil",
+      rating %in% c("PG", "TV-PG")            ~ "Família",
+      rating %in% c("PG-13", "TV-14")         ~ "Adolescente",
+      rating %in% c("TV-MA", "R", "NC-17")    ~ "Adulto",
+      TRUE                                     ~ "Não classificado"
+    )
+  )
+```
+
+### Resultado da limpeza
+
+```{r resumo_limpeza}
+tibble(
+  Métrica = c(
+    "Total de títulos", "Filmes", "Séries",
+    "Sem data de adição", "Sem país informado",
+    "Período coberto"
+  ),
+  Valor = c(
+    nrow(netflix),
+    sum(netflix$type == "Movie"),
+    sum(netflix$type == "TV Show"),
+    sum(is.na(netflix$date_added)),
+    sum(is.na(netflix$country)),
+    paste(min(netflix$year_added, na.rm = TRUE), "a",
+          max(netflix$year_added, na.rm = TRUE))
+  )
+) %>%
+  kable(align = c("l", "r"), col.names = c("Métrica", "Valor"))
+```
+
+O conjunto abrange 8.807 títulos, dos quais aproximadamente 70% são filmes. Cerca de 10% dos registros não possuem data de adição e serão excluídos das análises temporais, mas mantidos nas análises de composição do catálogo. Os registros sem país de origem também serão excluídos apenas nas análises geográficas.
+
+---
+
+## Subconjuntos
+
+Para facilitar as análises e evitar repetição de código, criamos subconjuntos a partir dos dados limpos. Cada subconjunto é descrito antes de ser utilizado.
+
+```{r subconjuntos}
+# 1. Contagem por ano de adição
+por_ano <- netflix %>%
+  filter(!is.na(year_added), year_added >= 2010) %>%
+  count(year_added, type) %>%
+  mutate(type_label = ifelse(type == "Movie", "Filme", "Série"))
+
+# 2. Contagem por mês
+por_mes <- netflix %>%
+  filter(!is.na(month_added)) %>%
+  count(month_added) %>%
+  arrange(month_added)
+
+# 3. Contagem por público-alvo
+por_audience <- netflix %>%
+  count(audience) %>%
+  arrange(desc(n))
+
+# 4. Contagem por tipo
+por_tipo <- netflix %>%
+  count(type) %>%
+  mutate(label = ifelse(type == "Movie", "Filme", "Série"))
+
+# 5. Top 15 países — cada co-produção conta em todos os países envolvidos
+paises_labels <- c(
+  "United States"  = "Estados Unidos", "India"        = "Índia",
+  "United Kingdom" = "Reino Unido",    "Canada"       = "Canadá",
+  "France"         = "França",         "Japan"        = "Japão",
+  "South Korea"    = "Coreia do Sul",  "Spain"        = "Espanha",
+  "Mexico"         = "México",         "Australia"    = "Austrália",
+  "Germany"        = "Alemanha",       "Turkey"       = "Turquia",
+  "Egypt"          = "Egito",          "Nigeria"      = "Nigéria",
+  "Brazil"         = "Brasil"
+)
+
+top_paises <- netflix %>%
+  separate_rows(country, sep = ",") %>%
+  mutate(country = str_trim(country)) %>%
+  filter(!is.na(country), country != "") %>%
+  count(country, sort = TRUE) %>%
+  slice_head(n = 15) %>%
+  mutate(country_pt = ifelse(
+    country %in% names(paises_labels), paises_labels[country], country
+  ))
+
+# 6. Crescimento de países selecionados ao longo do tempo
+paises_sel <- c("United States", "India", "United Kingdom",
+                "Japan", "South Korea", "Brazil")
+
+paises_tempo <- netflix %>%
+  separate_rows(country, sep = ",") %>%
+  mutate(country = str_trim(country)) %>%
+  filter(country %in% paises_sel, !is.na(year_added), year_added >= 2015) %>%
+  count(year_added, country) %>%
+  mutate(country_pt = paises_labels[country])
+
+# 7. Top 15 gêneros
+top_generos <- netflix %>%
+  separate_rows(listed_in, sep = ",") %>%
+  mutate(listed_in = str_trim(listed_in)) %>%
+  count(listed_in, sort = TRUE) %>%
+  slice_head(n = 15)
+
+# 8. Gêneros por tipo de conteúdo
+generos_tipo <- netflix %>%
+  separate_rows(listed_in, sep = ",") %>%
+  mutate(listed_in = str_trim(listed_in)) %>%
+  count(type, listed_in, sort = TRUE) %>%
+  group_by(type) %>%
+  slice_head(n = 8) %>%
+  ungroup()
+
+# 9. Subconjunto Brasil
+brasil <- netflix %>%
+  separate_rows(country, sep = ",") %>%
+  mutate(country = str_trim(country)) %>%
+  filter(country == "Brazil") %>%
+  select(type, title, year_added, audience, listed_in, rating) %>%
+  arrange(desc(year_added))
+
+# 10. Crescimento Brasil por ano
+brasil_ano <- brasil %>%
+  filter(!is.na(year_added)) %>%
+  count(year_added, type) %>%
+  mutate(type_label = ifelse(type == "Movie", "Filme", "Série"))
+
+# 11. Gêneros Brasil
+brasil_generos <- brasil %>%
+  separate_rows(listed_in, sep = ",") %>%
+  mutate(listed_in = str_trim(listed_in)) %>%
+  count(listed_in, sort = TRUE) %>%
+  slice_head(n = 10)
+```
+
+A seguir, uma visão dos subconjuntos gerados:
+
+### {.tabset .tabset-pills}
+
+#### Ano
+
+```{r sub_ano}
+por_ano %>%
+  pivot_wider(names_from = type_label, values_from = n, values_fill = 0) %>%
+  rename(Ano = year_added) %>%
+  kable(align = "r")
+```
+
+#### País
+
+```{r sub_pais}
+top_paises %>%
+  select(country_pt, n) %>%
+  rename(País = country_pt, Títulos = n) %>%
+  kable(align = c("l", "r"))
+```
+
+#### Gênero
+
+```{r sub_genero}
+top_generos %>%
+  rename(Gênero = listed_in, Títulos = n) %>%
+  kable(align = c("l", "r"))
+```
+
+#### Brasil
+
+```{r sub_brasil}
+brasil %>%
+  rename(Tipo = type, Título = title, Ano = year_added,
+         Público = audience, Gêneros = listed_in, Rating = rating) %>%
+  mutate(Tipo = ifelse(Tipo == "Movie", "Filme", "Série")) %>%
+  head(200) %>%
+  datatable(
+    options = list(
+      pageLength = 10, scrollX = TRUE, searchHighlight = TRUE,
+      language = list(
+        search   = "Buscar:",
+        info     = "Mostrando _START_ a _END_ de _TOTAL_ títulos",
+        paginate = list(`next` = "Próx.", previous = "Ant.")
+      )
+    ),
+    rownames = FALSE,
+    filter   = "top"
+  )
+```
+
+---
+
+## Visualizações
+
+Para avaliar o catálogo sob diferentes perspectivas, os gráficos estão organizados em quatro grupos. Cada grupo responde a uma dimensão de análise distinta.
+
+### {.tabset .tabset-pills}
+
+#### Crescimento
+
+##### Títulos adicionados por ano
+
+O gráfico abaixo mostra quantos títulos foram incorporados ao catálogo a cada ano, separados entre filmes e séries. A linha tracejada marca o início da pandemia (2020). O pico ocorreu em 2019; em 2020 houve queda — contrariando a intuição de que o isolamento aceleraria a expansão. A hipótese mais plausível é que as paralisações em sets de filmagem reduziram a oferta de conteúdo novo naquele ano.
+
+```{r graf_crescimento}
+plot_ly(
+  por_ano,
+  x     = ~year_added,
+  y     = ~n,
+  color = ~type_label,
+  type  = "bar",
+  colors = c("Filme" = "#E50914", "Série" = "#5a0a0a"),
+  hovertemplate = "<b>%{x}</b><br>%{y} títulos<extra>%{fullData.name}</extra>"
+) %>%
+  layout(
+    barmode = "stack",
+    shapes = list(list(
+      type = "line", x0 = 2019.5, x1 = 2019.5, y0 = 0, y1 = 1,
+      yref = "paper", line = list(color = "#666", width = 1.5, dash = "dot")
+    )),
+    annotations = list(list(
+      x = 2020, y = 0.97, yref = "paper",
+      text = "Pandemia (2020)", showarrow = FALSE,
+      font = list(color = "#888", size = 12),
+      xanchor = "left", yanchor = "top"
+    )),
+    title  = list(text = "Títulos adicionados por ano — filmes e séries",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Ano", color = "#999",
+                  tickmode = "linear", dtick = 1, gridcolor = "#1a1a1a"),
+    yaxis  = list(title = "Quantidade adicionada", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    legend = list(orientation = "h", x = 0, y = 1.1,
+                  font = list(color = "#ccc")),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+##### Sazonalidade mensal
+
+Janeiro e julho concentram os maiores volumes de adição ao longo de todos os anos combinados. Julho coincide com as férias de verão no hemisfério norte — principal mercado da plataforma. Janeiro aproveita o início do ano para renovar o catálogo e reconquistar assinantes.
+
+```{r graf_sazonalidade}
+plot_ly(
+  por_mes,
+  x    = ~month_added,
+  y    = ~n,
+  type = "scatter",
+  mode = "lines+markers",
+  line    = list(color = "#E50914", width = 2.5),
+  marker  = list(color = "#E50914", size = 9,
+                 line = list(color = "#fff", width = 1.5)),
+  hovertemplate = "<b>%{x}</b>: %{y} títulos<extra></extra>"
+) %>%
+  layout(
+    title  = list(text = "Distribuição mensal de adições ao catálogo (todos os anos)",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Mês", color = "#999", gridcolor = "#1a1a1a"),
+    yaxis  = list(title = "Títulos adicionados", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+#### Composição
+
+##### Filmes vs. séries
+
+O catálogo é majoritariamente composto por filmes — cerca de 70% do total. As séries, porém, têm peso desproporcional em engajamento, dado que o usuário retorna a elas semana após semana.
+
+```{r graf_tipo}
+plot_ly(
+  por_tipo,
+  labels = ~label,
+  values = ~n,
+  type   = "pie",
+  marker = list(
+    colors = c("#E50914", "#5a0a0a"),
+    line   = list(color = "#0f0f0f", width = 2)
+  ),
+  textinfo      = "label+percent",
+  hovertemplate = "%{label}: %{value} títulos (%{percent})<extra></extra>"
+) %>%
+  layout(
+    title         = list(text = "Proporção de filmes e séries no catálogo",
+                         font = list(color = "#ffffff", size = 15)),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#0f0f0f",
+    font          = list(color = "#cccccc"),
+    legend        = list(font = list(color = "#cccccc"))
+  )
+```
+
+##### Público-alvo
+
+Mais de 60% dos títulos carregam classificação adulta (TV-MA ou R). Conteúdo infantil e familiar representa uma parcela pequena, revelando uma plataforma que prioriza o assinante adulto pagante.
+
+```{r graf_audience}
+plot_ly(
+  por_audience,
+  x    = ~reorder(audience, n),
+  y    = ~n,
+  type = "bar",
+  marker = list(
+    color = colorRampPalette(c("#2a0505", "#E50914"))(nrow(por_audience)),
+    line  = list(color = "#0f0f0f", width = 1)
+  ),
+  text         = ~n,
+  textposition = "outside",
+  hovertemplate = "<b>%{x}</b>: %{y} títulos<extra></extra>"
+) %>%
+  layout(
+    title  = list(text = "Número de títulos por público-alvo",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Público-alvo", color = "#999",
+                  categoryorder = "total ascending"),
+    yaxis  = list(title = "Número de títulos", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+#### Países
+
+##### Os 15 países com mais títulos
+
+Cada título pode ter sido produzido em mais de um país; nesse caso, cada co-produção é contada em todos os países envolvidos. Os Estados Unidos dominam com mais de 2.800 títulos. A Índia em segundo reflete a estratégia da Netflix no mercado sul-asiático.
+
+```{r graf_paises}
+plot_ly(
+  top_paises,
+  x           = ~n,
+  y           = ~reorder(country_pt, n),
+  type        = "bar",
+  orientation = "h",
+  marker      = list(
+    color = colorRampPalette(c("#3a0707", "#E50914"))(15),
+    line  = list(color = "#0f0f0f", width = 0.5)
+  ),
+  text         = ~n,
+  textposition = "outside",
+  hovertemplate = "<b>%{y}</b>: %{x} títulos<extra></extra>"
+) %>%
+  layout(
+    title  = list(text = "Os 15 países com mais títulos no catálogo",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Número de títulos", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    yaxis  = list(title = "", color = "#ccc", automargin = TRUE),
+    margin = list(l = 130),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+##### Crescimento por país (2015–2021)
+
+A Índia teve crescimento expressivo entre 2018 e 2020. A Coreia do Sul apresentou curva ascendente consistente ao longo de todo o período — contexto em que o sucesso global de *Squid Game* (2021) representa o ponto mais visível de uma estratégia mais ampla.
+
+```{r graf_paises_tempo}
+plot_ly(
+  paises_tempo,
+  x     = ~year_added,
+  y     = ~n,
+  color = ~country_pt,
+  type  = "scatter",
+  mode  = "lines+markers",
+  line   = list(width = 2),
+  marker = list(size = 7),
+  hovertemplate = "<b>%{x}</b>: %{y} títulos<extra>%{fullData.name}</extra>"
+) %>%
+  layout(
+    title  = list(text = "Crescimento por país selecionado (2015–2021)",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Ano", color = "#999",
+                  tickmode = "linear", dtick = 1, gridcolor = "#1a1a1a"),
+    yaxis  = list(title = "Títulos adicionados", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    legend = list(title = list(text = ""), font = list(color = "#ccc")),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+#### Gêneros
+
+##### Os 15 gêneros mais frequentes
+
+Como cada título pode pertencer a mais de um gênero, cada categoria é contada individualmente. Dramas internacionais lideram, seguidos por comédias e documentários. A categoria "International" marca produções fora dos EUA, sinalizando que a plataforma investe ativamente na curadoria de conteúdo não anglofônico.
+
+```{r graf_generos}
+plot_ly(
+  top_generos,
+  x           = ~n,
+  y           = ~reorder(listed_in, n),
+  type        = "bar",
+  orientation = "h",
+  marker      = list(
+    color = colorRampPalette(c("#3a0707", "#E50914"))(15),
+    line  = list(color = "#0f0f0f", width = 0.5)
+  ),
+  text         = ~n,
+  textposition = "outside",
+  hovertemplate = "<b>%{y}</b>: %{x} títulos<extra></extra>"
+) %>%
+  layout(
+    title  = list(text = "Os 15 gêneros mais frequentes no catálogo",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Número de títulos", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    yaxis  = list(title = "", color = "#ccc", automargin = TRUE),
+    margin = list(l = 200),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+##### Filmes vs. séries por gênero
+
+Filmes concentram-se em drama, comédia e documentário. As séries lideram em drama, reality TV e crime — gêneros que constroem fidelização ao longo de episódios.
+
+```{r graf_generos_tipo}
+plot_ly() %>%
+  add_trace(
+    data        = generos_tipo %>% filter(type == "Movie"),
+    x           = ~n,
+    y           = ~reorder(listed_in, n),
+    type        = "bar",
+    orientation = "h",
+    name        = "Filme",
+    marker      = list(color = "#E50914"),
+    hovertemplate = "<b>%{y}</b>: %{x}<extra>Filme</extra>"
+  ) %>%
+  add_trace(
+    data        = generos_tipo %>% filter(type == "TV Show"),
+    x           = ~n,
+    y           = ~reorder(listed_in, n),
+    type        = "bar",
+    orientation = "h",
+    name        = "Série",
+    marker      = list(color = "#5a0a0a"),
+    hovertemplate = "<b>%{y}</b>: %{x}<extra>Série</extra>"
+  ) %>%
+  layout(
+    barmode = "group",
+    title   = list(text = "Top 8 gêneros: filmes vs. séries",
+                   font = list(color = "#ffffff", size = 15)),
+    xaxis   = list(title = "Número de títulos", color = "#999",
+                   gridcolor = "#1e1e1e"),
+    yaxis   = list(title = "", color = "#ccc", automargin = TRUE),
+    margin  = list(l = 200),
+    legend  = list(font = list(color = "#ccc")),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+#### Brasil
+
+##### Crescimento do conteúdo brasileiro
+
+O crescimento é consistente a partir de 2017, com aceleração em 2018 e 2019 — período dos primeiros investimentos da Netflix em produções originais brasileiras, como a série *3%*.
+
+```{r graf_brasil_ano}
+plot_ly(
+  brasil_ano,
+  x     = ~year_added,
+  y     = ~n,
+  color = ~type_label,
+  type  = "bar",
+  colors = c("Filme" = "#E50914", "Série" = "#5a0a0a"),
+  hovertemplate = "<b>%{x}</b>: %{y} títulos<extra>%{fullData.name}</extra>"
+) %>%
+  layout(
+    barmode = "stack",
+    title   = list(text = "Títulos brasileiros adicionados por ano",
+                   font = list(color = "#ffffff", size = 15)),
+    xaxis   = list(title = "Ano", color = "#999",
+                   tickmode = "linear", dtick = 1, gridcolor = "#1a1a1a"),
+    yaxis   = list(title = "Quantidade", color = "#999",
+                   gridcolor = "#1e1e1e"),
+    legend  = list(orientation = "h", x = 0, y = 1.1,
+                   font = list(color = "#ccc")),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+##### Gêneros mais frequentes no conteúdo brasileiro
+
+```{r graf_brasil_generos}
+plot_ly(
+  brasil_generos,
+  x           = ~n,
+  y           = ~reorder(listed_in, n),
+  type        = "bar",
+  orientation = "h",
+  marker      = list(
+    color = colorRampPalette(c("#3a0707", "#E50914"))(10),
+    line  = list(color = "#0f0f0f", width = 0.5)
+  ),
+  text         = ~n,
+  textposition = "outside",
+  hovertemplate = "<b>%{y}</b>: %{x} títulos<extra></extra>"
+) %>%
+  layout(
+    title  = list(text = "Gêneros mais frequentes no conteúdo brasileiro",
+                  font = list(color = "#ffffff", size = 15)),
+    xaxis  = list(title = "Número de títulos", color = "#999",
+                  gridcolor = "#1e1e1e"),
+    yaxis  = list(title = "", color = "#ccc", automargin = TRUE),
+    margin = list(l = 180),
+    paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
+    font = list(color = "#cccccc")
+  )
+```
+
+##### Catálogo brasileiro completo
+
+```{r tab_brasil}
+brasil %>%
+  rename(Tipo = type, Título = title, Ano = year_added,
+         Público = audience, Gêneros = listed_in, Rating = rating) %>%
+  mutate(Tipo = ifelse(Tipo == "Movie", "Filme", "Série")) %>%
+  datatable(
+    options = list(
+      pageLength = 10, scrollX = TRUE, searchHighlight = TRUE,
+      language = list(
+        search   = "Buscar:",
+        info     = "Mostrando _START_ a _END_ de _TOTAL_ títulos",
+        paginate = list(`next` = "Próx.", previous = "Ant.")
+      )
+    ),
+    rownames = FALSE,
+    filter   = "top"
+  )
+```
 
 ---
 
 ## Conclusões
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+### Declaração do problema revisitada
+
+Este trabalho analisou a evolução do catálogo da Netflix entre 2008 e 2021, com foco em padrões de crescimento, distribuição geográfica, composição por gênero e público, e o impacto da pandemia de COVID-19. A questão central era: a pandemia acelerou a expansão do catálogo?
+
+### Metodologia empregada
+
+Os dados do Kaggle foram importados, limpos e transformados com o tidyverse e lubridate. Variáveis com múltiplos valores foram separadas para permitir contagens por país e gênero. Foi criada a variável `audience` a partir das siglas de rating americanas. Todas as visualizações foram feitas com plotly para permitir interação direta com os gráficos.
+
+### Principais achados
+
+```{=html}
+<ul class="finding-list">
+  <li><strong>A pandemia não expandiu o catálogo no curto prazo:</strong> o pico de adições ocorreu em 2019. Em 2020, houve recuo — as paralisações de produção foram o fator mais provável. A recuperação parcial apareceu apenas em 2021.</li>
+  <li><strong>Sazonalidade clara:</strong> janeiro e julho concentram as maiores adições ao catálogo em todos os anos analisados, coincidindo com períodos de férias nos principais mercados.</li>
+  <li><strong>O catálogo é majoritariamente adulto:</strong> mais de 60% dos títulos são TV-MA ou R, revelando uma plataforma que prioriza o assinante adulto pagante em vez do público familiar.</li>
+  <li><strong>Os EUA dominam, mas a internacionalização é real:</strong> Índia, Coreia do Sul, Japão e Brasil crescem consistentemente. O conteúdo não anglofônico passou a ser um diferencial competitivo da plataforma.</li>
+  <li><strong>Drama é o gênero universal:</strong> tanto em filmes quanto em séries o drama domina. Reality TV e crime lideram especificamente entre as séries, gêneros que constroem fidelização ao longo de episódios.</li>
+  <li><strong>O Brasil cresceu de forma consistente a partir de 2017:</strong> o conteúdo brasileiro mais do que dobrou entre 2017 e 2019, reflexo de investimentos em produções originais locais como a série <em>3%</em>.</li>
+</ul>
+```
+
+### Implicações
+
+Para produtores e realizadores: drama e conteúdo adulto têm mais espaço na plataforma. O mercado internacional é uma oportunidade real — a Netflix usa produções de países como Brasil e Coreia do Sul como diferenciais globais, não apenas como conteúdo local para audiências locais.
+
+Para pesquisadores de mídia: os dados contradizem a narrativa de "boom do streaming durante a pandemia". O crescimento existiu em audiência e receita, mas não se traduziu imediatamente em expansão de catálogo — o que aponta para um gargalo de produção, não de demanda.
+
+### Limitações e próximos passos
+
+Os dados cobrem apenas títulos disponíveis no catálogo em 2021 e não registram remoções. Isso subestima o volume real de conteúdo que passou pela plataforma ao longo do tempo. Além disso, os dados não contêm informações sobre número de visualizações, o que impede qualquer análise sobre o sucesso relativo de cada título.
+
+Análises futuras poderiam cruzar esses dados com métricas de audiência (quando disponíveis publicamente), com informações sobre quando cada título foi retirado do catálogo — permitindo medir vida útil média de um título — ou com dados de bilheteria para entender o intervalo entre o lançamento original e a chegada à plataforma.
