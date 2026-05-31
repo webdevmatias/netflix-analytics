@@ -262,7 +262,19 @@ pre {
 </div>
 ```
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.
+A Netflix se consolidou como uma das principais plataformas de streaming do mundo, ampliando seu catálogo ao longo dos anos e expandindo sua presença em diferentes países. Esse crescimento acompanhou mudanças importantes no consumo de entretenimento digital, tornando a plataforma um objeto relevante de análise.
+
+Entre 2020 e 2021, a pandemia da COVID-19 provocou mudanças significativas nos hábitos de consumo de mídia. Com o aumento do tempo em casa e a maior procura por entretenimento, os serviços de streaming ganharam ainda mais destaque. Nesse contexto, torna-se relevante observar de que forma a Netflix organizou e expandiu seu catálogo durante esse período.
+
+Este trabalho tem como objetivo analisar o catálogo da Netflix entre 2008 e 2021 com base no conjunto de dados Netflix Movies and TV Shows, disponível na plataforma Kaggle, especificamente o arquivo (<a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank">netflix_titles.csv - Kaggle Dataset</a>). A base reúne informações como tipo de conteúdo, país de produção, data de adição e classificação indicativa, permitindo observar padrões ao longo do tempo.
+
+A análise foi organizada em quatro eixos principais:
+
+- Crescimento temporal: análise da evolução do número de títulos adicionados ao catálogo ao longo dos anos, com atenção especial ao período anterior e durante a pandemia.
+- Distribuição geográfica: identificação dos países com maior presença no catálogo e observação da participação internacional na plataforma.
+- Composição do catálogo: avaliação da distribuição entre filmes e séries, além dos gêneros mais frequentes.
+- Recorte brasileiro: análise da participação do Brasil no catálogo global e de sua evolução ao longo do período estudado.
+
 
 ---
 
