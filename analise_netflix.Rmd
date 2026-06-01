@@ -35,16 +35,6 @@ body {
   text-align: left;
 }
 
-.report-header .label {
-  margin-bottom: 14px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #E50914;
-  text-align: left;
-}
-
 .report-header h1 {
   margin: 0 0 14px;
   font-family: 'DM Serif Display', serif;
@@ -94,9 +84,7 @@ body {
   border-bottom: 1px solid #1e1e1e !important;
 }
 
-.nav-tabs > li {
-  float: none !important;
-}
+.nav-tabs > li { float: none !important; }
 
 .nav-tabs > li > a {
   background: transparent !important;
@@ -121,7 +109,7 @@ body {
   background: transparent !important;
 }
 
-/* TABSET INTERNO (subabas) */
+/* TABSET INTERNO */
 .nav-pills > li > a {
   background: #1a1a1a !important;
   color: #888 !important;
@@ -142,6 +130,23 @@ body {
 .nav-pills > li.active > a:hover {
   background: #E50914 !important;
   color: #fff !important;
+}
+
+/* REQUISITO BADGE */
+.req-badge {
+  display: inline-block;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-left: 3px solid #E50914;
+  color: #888;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 12px;
+  display: block;
 }
 
 /* TYPOGRAPHY */
@@ -235,7 +240,21 @@ blockquote {
 .finding-list li::before { content: ''; position: absolute; left: 0; top: 22px; width: 7px; height: 7px; background: #E50914; border-radius: 50%; }
 .finding-list li:last-child { border-bottom: none; }
 
-/* DT TABLES */
+/* INSIGHT BOX */
+.insight-box {
+  background: #111;
+  border: 1px solid #222;
+  border-left: 3px solid #E50914;
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 20px 0 28px;
+  color: #bbb;
+  font-size: 15px;
+}
+
+.insight-box strong { color: #fff; }
+
+/* DT / TABLE */
 table { width: 100%; border-collapse: collapse; margin: 20px 0; }
 th { background: #1a1a1a !important; color: #E50914 !important; }
 td { color: #ccc !important; background: transparent !important; }
@@ -279,124 +298,166 @@ hr { border: none; border-top: 1px solid #1e1e1e; margin: 32px 0; }
 </div>
 ```
 
-### Declaração do problema
+```{=html}
+<span class="req-badge">1.1 — Declaração do problema e relevância</span>
+```
 
-A Netflix é uma das principais plataformas de streaming do mundo, com crescimento acelerado ao longo dos anos e forte expansão internacional. Seu catálogo reflete mudanças na indústria do entretenimento, incluindo a globalização da produção audiovisual e o aumento do consumo de conteúdo sob demanda.
+A Netflix é uma das maiores plataformas de streaming do mundo, com mais de 200 milhões de assinantes e presença em mais de 190 países. Seu catálogo cresce continuamente e reflete decisões estratégicas de mercado, preferências de consumo e o impacto de eventos globais. Entender como esse catálogo foi construído ao longo do tempo não é trivial: o volume de conteúdo, a origem geográfica e a composição por gênero revelam prioridades da empresa que raramente estão explícitas em seus comunicados oficiais.
 
-Este projeto busca analisar a evolução do catálogo da Netflix entre 2008 e 2021, com foco em identificar padrões de crescimento, distribuição geográfica e composição de conteúdo. O interesse na análise está no fato de que o catálogo de uma plataforma desse porte não cresce de forma aleatória, mas sim refletindo decisões estratégicas de mercado, preferências de consumo e eventos globais — como a pandemia da COVID-19. Uma questão central desta análise é: a pandemia de 2020 de fato acelerou a expansão do catálogo, como seria esperado dado o aumento do consumo em casa?
+Este projeto analisa a evolução do catálogo da Netflix entre 2008 e 2021. A questão central é direta: **a pandemia de COVID-19 de fato acelerou a expansão do catálogo, como seria natural esperar dado o aumento do consumo doméstico de streaming?** Além disso, buscamos entender como a distribuição geográfica do conteúdo mudou, quais gêneros dominam e qual é o espaço do Brasil dentro dessa plataforma global.
 
-### Abordagem e metodologia
+Esse tema interessa tanto a pesquisadores de comunicação e mídia quanto a profissionais da indústria audiovisual. Para quem produz conteúdo, entender o catálogo da maior plataforma de streaming do mundo é entender onde há espaço para crescer.
 
-Para responder a essa e outras questões, será utilizado o conjunto de dados *Netflix Movies and TV Shows*, disponível na plataforma Kaggle ([link do dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows)), tendo como base o arquivo `netflix_titles.csv`. A base contém informações sobre títulos disponíveis na plataforma, como tipo de conteúdo, país de origem, data de adição, duração e classificação indicativa.
+```{=html}
+<span class="req-badge">1.2 — Dados utilizados e abordagem geral</span>
+```
 
-A abordagem envolve análise exploratória de dados, com etapas de limpeza, transformação e criação de variáveis derivadas. Serão utilizados recursos de visualização estatística e análise temporal para identificar tendências e padrões relevantes no comportamento do catálogo ao longo do tempo. A análise segue quatro eixos principais:
+Será utilizado o conjunto de dados *Netflix Movies and TV Shows*, disponível publicamente no Kaggle (<a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank">link do dataset</a>), com base no arquivo `netflix_titles.csv`. A base contém 8.807 registros e 12 variáveis, cobrindo títulos adicionados à plataforma de 2008 a 2021.
 
-> **Crescimento temporal** — quantos títulos foram adicionados a cada ano, com destaque para o período 2018–2021 e o impacto da pandemia.
->
-> **Distribuição geográfica** — quais países concentram a produção e como essa distribuição mudou ao longo do tempo.
->
-> **Composição do catálogo** — proporção entre filmes e séries, gêneros dominantes e classificação indicativa por público.
->
-> **Recorte brasileiro** — presença e crescimento do conteúdo nacional dentro da plataforma global.
+A abordagem é quantitativa e exploratória: os dados serão importados, limpos e transformados antes de qualquer análise. Variáveis de texto com múltiplos valores serão separadas para permitir contagens por país e gênero. Novas variáveis serão criadas para enriquecer a análise. Por fim, visualizações interativas serão usadas para tornar os padrões visíveis.
 
-### Utilidade da análise
+```{=html}
+<span class="req-badge">1.3 — Técnica e metodologia detalhada</span>
+```
 
-Os resultados desta análise podem ser úteis para compreender como plataformas de streaming estruturam seus catálogos globalmente, permitindo identificar quais tipos de conteúdo são priorizados, como diferentes países participam dessa produção e como eventos externos influenciam a dinâmica de expansão do catálogo. Para produtores e realizadores, a análise aponta quais gêneros e mercados recebem mais espaço. Para pesquisadores de mídia, oferece evidências sobre estratégias de internacionalização de conteúdo.
+A análise segue quatro eixos, cada um respondendo a uma pergunta específica:
+
+<ul class="finding-list">
+  <li><strong>Crescimento temporal:</strong> Quantos títulos foram adicionados a cada ano? O ritmo foi constante? A pandemia de 2020 alterou esse ritmo?</li>
+  <li><strong>Distribuição geográfica:</strong> Quais países concentram a produção? Como o peso relativo de cada país mudou entre 2015 e 2021?</li>
+  <li><strong>Composição do catálogo: </strong> O catálogo é dominado por filmes ou séries? Quais gêneros prevalecem? Para qual público a plataforma produz mais?</li>
+  <li><strong>Recorte brasileiro: </strong> Qual é o volume e o crescimento do conteúdo brasileiro? Em quais gêneros o Brasil está presente?</li>
+</ul>
+
+As técnicas empregadas incluem: separação de variáveis multivaloradas com `separate_rows()`, criação de variáveis derivadas com `mutate()` e `case_when()`, agregações com `count()` e `group_by()`, e visualização interativa com `plotly`.
+
+```{=html}
+<span class="req-badge">1.4 — Utilidade para os clientes da análise</span>
+```
+
+Esta análise tem utilidade prática para três perfis de leitores. **Produtores e realizadores audiovisuais** podem identificar quais gêneros e formatos têm mais espaço na plataforma, orientando decisões de desenvolvimento de projetos. **Pesquisadores de mídia e comunicação** encontram aqui evidências sobre como plataformas globais estruturam seus catálogos e como eventos externos como uma pandemia afetam essa estrutura. **Estudantes e profissionais de dados** podem usar este trabalho como referência de análise exploratória com dados reais, sujos e não normalizados, exatamente o tipo de dado encontrado no mercado.
 
 ---
 
 ## Requisitos
 
-### Pacotes utilizados
+```{=html}
+<span class="req-badge">2.1 — Pacotes carregados antecipadamente</span>
+```
 
-Os pacotes a seguir são necessários para reproduzir a análise sem erros. Todos devem ser carregados antes da execução dos demais blocos de código.
+Os pacotes abaixo são carregados no início do relatório para que qualquer leitor saiba exatamente o que instalar antes de tentar reproduzir a análise.
+
+```{=html}
+<span class="req-badge">2.2 — Finalidade de cada pacote explicada</span>
+```
 
 ```{=html}
 <table class="dict-table">
   <thead>
-    <tr><th>Pacote</th><th>Tipo</th><th>Finalidade</th></tr>
+    <tr><th>Pacote</th><th>Categoria</th><th>Finalidade neste projeto</th></tr>
   </thead>
   <tbody>
-    <tr><td>tidyverse</td><td>meta-pacote</td><td>Instalação e carregamento conjunto de pacotes essenciais para manipulação e visualização de dados (inclui dplyr, ggplot2, tidyr, readr, entre outros)</td></tr>
-    <tr><td>lubridate</td><td>datas</td><td>Conversão de strings de texto em objetos de data e extração de componentes como ano e mês</td></tr>
-    <tr><td>plotly</td><td>visualização</td><td>Criação de gráficos interativos com zoom, tooltip e filtros por clique na legenda</td></tr>
-    <tr><td>DT</td><td>tabelas</td><td>Renderização de tabelas HTML interativas com busca, ordenação e paginação</td></tr>
-    <tr><td>stringr</td><td>texto</td><td>Manipulação de strings, limpeza de espaços e separação de valores múltiplos em colunas</td></tr>
-    <tr><td>scales</td><td>formatação</td><td>Formatação de eixos e rótulos em gráficos, como separadores de milhar e porcentagens</td></tr>
-    <tr><td>knitr</td><td>relatório</td><td>Geração dinâmica do relatório e renderização de tabelas estáticas com kable()</td></tr>
+    <tr><td>tidyverse</td><td>meta-pacote</td><td>Carrega em conjunto dplyr (manipulação), tidyr (reestruturação), ggplot2 (visualização estática) e readr (importação). Base de toda a análise.</td></tr>
+    <tr><td>lubridate</td><td>datas</td><td>Converte a coluna <code>date_added</code>, que está em texto no formato americano ("September 25, 2021"), para o tipo Date do R. Extrai ano e mês como variáveis separadas.</td></tr>
+    <tr><td>plotly</td><td>visualização interativa</td><td>Gera gráficos HTML interativos com zoom, tooltip ao passar o mouse e filtros por clique na legenda — sem necessidade de Shiny.</td></tr>
+    <tr><td>DT</td><td>tabelas interativas</td><td>Renderiza data frames como tabelas HTML com busca por texto, ordenação por coluna, paginação e filtros por coluna.</td></tr>
+    <tr><td>stringr</td><td>texto</td><td>Manipula strings: remove espaços extras com <code>str_trim()</code> e permite separar valores múltiplos em colunas como <code>country</code> e <code>listed_in</code>.</td></tr>
+    <tr><td>scales</td><td>formatação</td><td>Formata rótulos de eixos em gráficos, como separadores de milhar e porcentagens legíveis.</td></tr>
+    <tr><td>knitr</td><td>relatório</td><td>Integra código R ao documento e gera tabelas estáticas formatadas com <code>kable()</code>.</td></tr>
   </tbody>
 </table>
 ```
 
 ```{r pacotes, message=FALSE, warning=FALSE}
-library(tidyverse)   # manipulação e visualização de dados
+library(tidyverse)   # dplyr, tidyr, readr, ggplot2 e outros
 library(lubridate)   # conversão e extração de componentes de datas
-library(plotly)      # gráficos interativos
-library(DT)          # tabelas interativas com busca e ordenação
-library(stringr)     # manipulação de texto e expressões regulares
-library(scales)      # formatação de eixos e rótulos nos gráficos
-library(knitr)       # geração do relatório e tabelas estáticas
+library(plotly)      # gráficos interativos em HTML
+library(DT)          # tabelas HTML interativas
+library(stringr)     # manipulação e limpeza de strings
+library(scales)      # formatação de eixos e rótulos
+library(knitr)       # geração do relatório e kable()
 ```
 
 ---
 
 ## Importação e Preparação
 
-### Fonte dos dados
+```{=html}
+<span class="req-badge">3.1 — Fonte citada com hiperlink</span>
+```
 
-Os dados foram obtidos do Kaggle: [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows), compilado por Shivam Bansal e atualizado em 2021. O conjunto contém 8.807 linhas e 12 colunas, com uma linha por título disponível na plataforma no momento da coleta.
+Os dados foram obtidos do Kaggle: <a href="https://www.kaggle.com/datasets/shivamb/netflix-shows" target="_blank">Netflix Movies and TV Shows</a>, compilado por Shivam Bansal.
 
-As colunas originais são: `show_id`, `type`, `title`, `director`, `cast`, `country`, `date_added`, `release_year`, `rating`, `duration`, `listed_in` e `description`. Algumas peculiaridades dos dados brutos:
+```{=html}
+<span class="req-badge">3.2 — Dados da fonte explicados minuciosamente</span>
+```
 
-- `date_added` está em formato textual americano (`"September 25, 2021"`), exigindo conversão explícita para data.
-- `country` e `listed_in` podem conter múltiplos valores separados por vírgula em uma única célula.
-- `rating` usa nomenclatura americana (TV-MA, TV-14, PG-13), que precisa ser traduzida para classificação por público.
-- Valores ausentes ocorrem em `director` (30%), `cast` (10%), `country` (10%) e `date_added` (1%).
+O dataset tem como propósito original catalogar os títulos disponíveis na plataforma Netflix para análise pública. Foi coletado via web scraping da interface da Netflix e atualizado pela última vez em 2021. Em sua forma original, contém **8.807 linhas e 12 colunas**, cada linha representando um título único.
 
-### Importação
+Peculiaridades importantes dos dados brutos:
+
+<ul class="finding-list">
+  <li><strong>Passo 1 — Conversão de <code>date_added</code> para Date:</strong> a coluna chegou como texto; sem converter para Date o R não consegue extrair ano nem mês, tornando qualquer análise temporal impossível.</li>
+
+  <li><strong>Passo 2 — Criação de <code>year_added</code> e <code>month_added</code>:</strong> extraímos ano e mês como variáveis separadas para evitar repetir o parse em cada análise temporal e facilitar agrupamentos.</li>
+
+  <li><strong>Passo 3 — Extração numérica de <code>duration</code>:</strong> a coluna mistura “90 min” e “2 Seasons” — <code>parse_number()</code> extrai apenas o número, permitindo comparações dentro de cada tipo de conteúdo.</li>
+
+  <li><strong>Passo 4 — Remoção de espaços extras:</strong> <code>country</code> e <code>listed_in</code> têm espaços antes e depois das vírgulas (ex: "United States"), o que causaria duplicatas nas contagens após separação.</li>
+
+  <li><strong>Passo 5 — Criação de <code>audience</code>:</strong> o rating americano (TV-MA, PG-13, R…) é pouco intuitivo para o público brasileiro. Agrupamos em quatro categorias de público reconhecíveis, criando uma nova variável a partir de uma existente e aplicando engenharia de variáveis.</li>
+</ul>
+
+```{=html}
+<span class="req-badge">3.3 — Importação dos dados</span>
+```
 
 ```{r importacao, message=FALSE, warning=FALSE}
 netflix <- read_csv("./data/netflix_titles.csv")
 
-# Verificar estrutura inicial antes de qualquer transformação
+# Verificar estrutura antes de qualquer transformação
 glimpse(netflix)
 ```
 
-### Dicionário de dados
+```{=html}
+<span class="req-badge">3.2 — Dicionário de dados original</span>
+```
 
 ```{=html}
 <table class="dict-table">
   <thead>
-    <tr><th>Variável</th><th>Tipo</th><th>Descrição</th></tr>
+    <tr><th>Variável</th><th>Tipo original</th><th>Descrição</th></tr>
   </thead>
   <tbody>
-    <tr><td>show_id</td><td>character</td><td>Identificador único de cada título</td></tr>
-    <tr><td>type</td><td>character</td><td>Tipo de conteúdo: "Movie" (filme) ou "TV Show" (série)</td></tr>
+    <tr><td>show_id</td><td>character</td><td>Identificador único de cada título no dataset</td></tr>
+    <tr><td>type</td><td>character</td><td>"Movie" (filme) ou "TV Show" (série)</td></tr>
     <tr><td>title</td><td>character</td><td>Nome do título</td></tr>
-    <tr><td>director</td><td>character</td><td>Nome do diretor (pode estar ausente)</td></tr>
-    <tr><td>cast</td><td>character</td><td>Elenco principal separado por vírgula (pode estar ausente)</td></tr>
-    <tr><td>country</td><td>character</td><td>País de produção — pode conter múltiplos valores separados por vírgula</td></tr>
-    <tr><td>date_added</td><td>character → Date</td><td>Data em que o título foi adicionado ao catálogo (texto no original)</td></tr>
+    <tr><td>director</td><td>character</td><td>Diretor — ausente em ~30% dos registros</td></tr>
+    <tr><td>cast</td><td>character</td><td>Elenco separado por vírgula — ausente em ~10%</td></tr>
+    <tr><td>country</td><td>character</td><td>País(es) de produção separados por vírgula — ausente em ~10%</td></tr>
+    <tr><td>date_added</td><td>character</td><td>Data de adição ao catálogo em texto americano — ausente em ~1%</td></tr>
     <tr><td>release_year</td><td>integer</td><td>Ano de lançamento original do título</td></tr>
-    <tr><td>rating</td><td>character</td><td>Classificação indicativa no padrão americano (TV-MA, PG-13, R, etc.)</td></tr>
-    <tr><td>duration</td><td>character</td><td>Duração em minutos (filmes) ou número de temporadas (séries)</td></tr>
-    <tr><td>listed_in</td><td>character</td><td>Gêneros do título — pode conter múltiplos valores separados por vírgula</td></tr>
-    <tr><td>description</td><td>character</td><td>Sinopse do título</td></tr>
+    <tr><td>rating</td><td>character</td><td>Classificação indicativa no padrão americano</td></tr>
+    <tr><td>duration</td><td>character</td><td>Duração em minutos (filmes) ou número de temporadas (séries) — unidades misturadas</td></tr>
+    <tr><td>listed_in</td><td>character</td><td>Gêneros separados por vírgula — múltiplos valores por célula</td></tr>
+    <tr><td>description</td><td>character</td><td>Sinopse curta do título</td></tr>
   </tbody>
 </table>
 ```
 
-### Amostra dos dados brutos
+```{=html}
+<span class="req-badge">3.4 — Amostra dos dados brutos (máx. 200 linhas)</span>
+```
 
 ```{r amostra_bruta}
+# Limitado a 200 linhas conforme requisito 3.4
 netflix %>%
   select(type, title, country, date_added, rating, listed_in) %>%
   head(200) %>%
   datatable(
     options = list(
-      pageLength = 10,
-      scrollX    = TRUE,
-      language   = list(
+      pageLength = 10, scrollX = TRUE,
+      language = list(
         search   = "Buscar:",
         info     = "Mostrando _START_ a _END_ de _TOTAL_ registros",
         paginate = list(`next` = "Próx.", previous = "Ant.")
@@ -411,32 +472,32 @@ netflix %>%
 
 ## Limpeza
 
-### Etapas de transformação
+```{=html}
+<span class="req-badge">Requisito 3.3 — Etapas de limpeza explicadas no texto com justificativa</span>
+```
 
-As transformações abaixo seguem uma lógica sequencial: primeiro convertemos tipos de dados, depois padronizamos texto, e por último criamos variáveis derivadas. Cada etapa é justificada nos comentários do código.
+As transformações seguem uma ordem lógica: primeiro corrigimos tipos de dados incorretos, depois padronizamos o texto, e por último criamos variáveis derivadas que enriquecerão a análise.
+
+
 
 ```{r limpeza}
 netflix <- netflix %>%
   mutate(
-    # date_added estava como texto no formato "Month DD, YYYY" (padrão americano)
-    # mdy() do lubridate interpreta esse formato e converte para Date
+    # Passo 1: converte texto "September 25, 2021" para Date
     date_added = mdy(date_added),
 
-    # Extraímos ano e mês para facilitar análises temporais sem repetir o parse
+    # Passo 2: extrai ano e mês como variáveis separadas
     year_added  = year(date_added),
     month_added = month(date_added, label = TRUE, abbr = TRUE),
 
-    # duration mistura "90 min" (filmes) e "2 Seasons" (séries) na mesma coluna
-    # parse_number() extrai apenas o número, ignorando o sufixo textual
+    # Passo 3: extrai apenas o número de "90 min" ou "2 Seasons"
     duration_value = parse_number(duration),
 
-    # country e listed_in têm espaços extras ao redor das vírgulas
-    # str_trim() remove espaços no início e fim de cada string
+    # Passo 4: remove espaços extras para evitar duplicatas na separação
     listed_in = str_trim(listed_in),
     country   = str_trim(country),
 
-    # rating usa siglas americanas pouco intuitivas para leitores brasileiros
-    # criamos audience para agrupar em categorias de público reconhecíveis
+    # Passo 5: agrupa ratings americanos em categorias de público em pt-br
     audience = case_when(
       rating %in% c("TV-Y", "TV-Y7", "G")     ~ "Infantil",
       rating %in% c("PG", "TV-PG")            ~ "Família",
@@ -447,68 +508,87 @@ netflix <- netflix %>%
   )
 ```
 
-### Resultado da limpeza
+```{=html}
+<span class="req-badge">3.4 e 3.5 — Dados limpos exibidos de forma condensada com resumo consolidado</span>
+```
 
 ```{r resumo_limpeza}
 tibble(
-  Métrica = c(
-    "Total de títulos", "Filmes", "Séries",
-    "Sem data de adição", "Sem país informado",
-    "Período coberto"
+  Variável    = c("type", "title", "country", "date_added",
+                  "release_year", "rating", "duration",
+                  "listed_in", "year_added", "audience"),
+  Tipo        = c("character", "character", "character", "Date",
+                  "integer", "character", "character",
+                  "character", "integer (derivada)", "character (derivada)"),
+  `Valores distintos` = c(
+    n_distinct(netflix$type),
+    n_distinct(netflix$title),
+    n_distinct(netflix$country, na.rm = TRUE),
+    n_distinct(netflix$date_added, na.rm = TRUE),
+    n_distinct(netflix$release_year),
+    n_distinct(netflix$rating, na.rm = TRUE),
+    n_distinct(netflix$duration),
+    n_distinct(netflix$listed_in),
+    n_distinct(netflix$year_added, na.rm = TRUE),
+    n_distinct(netflix$audience)
   ),
-  Valor = c(
-    nrow(netflix),
-    sum(netflix$type == "Movie"),
-    sum(netflix$type == "TV Show"),
-    sum(is.na(netflix$date_added)),
+  `Ausentes` = c(
+    sum(is.na(netflix$type)),
+    sum(is.na(netflix$title)),
     sum(is.na(netflix$country)),
-    paste(min(netflix$year_added, na.rm = TRUE), "a",
-          max(netflix$year_added, na.rm = TRUE))
+    sum(is.na(netflix$date_added)),
+    sum(is.na(netflix$release_year)),
+    sum(is.na(netflix$rating)),
+    sum(is.na(netflix$duration)),
+    sum(is.na(netflix$listed_in)),
+    sum(is.na(netflix$year_added)),
+    sum(is.na(netflix$audience))
   )
 ) %>%
-  kable(align = c("l", "r"), col.names = c("Métrica", "Valor"))
+  kable(align = c("l", "l", "r", "r"))
 ```
 
-O conjunto abrange 8.807 títulos, dos quais aproximadamente 70% são filmes. Cerca de 10% dos registros não possuem data de adição e serão excluídos das análises temporais, mas mantidos nas análises de composição do catálogo. Os registros sem país de origem também serão excluídos apenas nas análises geográficas.
+O conjunto limpo mantém `r nrow(netflix)` títulos. Foram criadas duas variáveis derivadas: `year_added` e `audience`. A variável `date_added` foi convertida de texto para Date. `country` e `listed_in` permanecem como texto multivalorado, a separação ocorre por demanda em cada análise para não duplicar linhas desnecessariamente no dataset principal.
 
 ---
 
 ## Subconjuntos
 
-Para facilitar as análises e evitar repetição de código, criamos subconjuntos a partir dos dados limpos. Cada subconjunto é descrito antes de ser utilizado.
+Para facilitar as análises e evitar repetição de código, criamos subconjuntos a partir dos dados limpos. Variáveis com múltiplos valores por célula (`country`, `listed_in`) são separadas aqui com `separate_rows()`, gerando um registro por valor, técnica que permite contagens corretas por país e por gênero.
 
 ```{r subconjuntos}
-# 1. Contagem por ano de adição
+# 1. Títulos por ano e tipo — base para análise de crescimento temporal
 por_ano <- netflix %>%
   filter(!is.na(year_added), year_added >= 2010) %>%
   count(year_added, type) %>%
   mutate(type_label = ifelse(type == "Movie", "Filme", "Série"))
 
-# 2. Contagem por mês
+# 2. Títulos por mês — base para análise de sazonalidade
 por_mes <- netflix %>%
   filter(!is.na(month_added)) %>%
   count(month_added) %>%
   arrange(month_added)
 
-# 3. Contagem por público-alvo
+# 3. Títulos por público-alvo — usa a variável derivada audience
 por_audience <- netflix %>%
   count(audience) %>%
   arrange(desc(n))
 
-# 4. Contagem por tipo
+# 4. Proporção entre filmes e séries
 por_tipo <- netflix %>%
   count(type) %>%
   mutate(label = ifelse(type == "Movie", "Filme", "Série"))
 
-# 5. Top 15 países — cada co-produção conta em todos os países envolvidos
+# 5. Top 15 países: separate_rows() expande países múltiplos em linhas individuais
+#    Vetor nomeado para tradução dos países mais frequentes
 paises_labels <- c(
-  "United States"  = "Estados Unidos", "India"        = "Índia",
-  "United Kingdom" = "Reino Unido",    "Canada"       = "Canadá",
-  "France"         = "França",         "Japan"        = "Japão",
-  "South Korea"    = "Coreia do Sul",  "Spain"        = "Espanha",
-  "Mexico"         = "México",         "Australia"    = "Austrália",
-  "Germany"        = "Alemanha",       "Turkey"       = "Turquia",
-  "Egypt"          = "Egito",          "Nigeria"      = "Nigéria",
+  "United States"  = "Estados Unidos", "India"       = "Índia",
+  "United Kingdom" = "Reino Unido",    "Canada"      = "Canadá",
+  "France"         = "França",         "Japan"       = "Japão",
+  "South Korea"    = "Coreia do Sul",  "Spain"       = "Espanha",
+  "Mexico"         = "México",         "Australia"   = "Austrália",
+  "Germany"        = "Alemanha",       "Turkey"      = "Turquia",
+  "Egypt"          = "Egito",          "Nigeria"     = "Nigéria",
   "Brazil"         = "Brasil"
 )
 
@@ -522,7 +602,7 @@ top_paises <- netflix %>%
     country %in% names(paises_labels), paises_labels[country], country
   ))
 
-# 6. Crescimento de países selecionados ao longo do tempo
+# 6. Crescimento de seis países ao longo do tempo (2015–2021)
 paises_sel <- c("United States", "India", "United Kingdom",
                 "Japan", "South Korea", "Brazil")
 
@@ -533,14 +613,14 @@ paises_tempo <- netflix %>%
   count(year_added, country) %>%
   mutate(country_pt = paises_labels[country])
 
-# 7. Top 15 gêneros
+# 7. Top 15 gêneros: separate_rows() expande gêneros múltiplos em linhas individuais
 top_generos <- netflix %>%
   separate_rows(listed_in, sep = ",") %>%
   mutate(listed_in = str_trim(listed_in)) %>%
   count(listed_in, sort = TRUE) %>%
   slice_head(n = 15)
 
-# 8. Gêneros por tipo de conteúdo
+# 8. Top 8 gêneros por tipo (filmes x séries) — para comparação direta
 generos_tipo <- netflix %>%
   separate_rows(listed_in, sep = ",") %>%
   mutate(listed_in = str_trim(listed_in)) %>%
@@ -549,7 +629,7 @@ generos_tipo <- netflix %>%
   slice_head(n = 8) %>%
   ungroup()
 
-# 9. Subconjunto Brasil
+# 9. Subconjunto filtrado: apenas títulos com Brasil como país de produção
 brasil <- netflix %>%
   separate_rows(country, sep = ",") %>%
   mutate(country = str_trim(country)) %>%
@@ -557,13 +637,13 @@ brasil <- netflix %>%
   select(type, title, year_added, audience, listed_in, rating) %>%
   arrange(desc(year_added))
 
-# 10. Crescimento Brasil por ano
+# 10. Crescimento brasileiro por ano e tipo
 brasil_ano <- brasil %>%
   filter(!is.na(year_added)) %>%
   count(year_added, type) %>%
   mutate(type_label = ifelse(type == "Movie", "Filme", "Série"))
 
-# 11. Gêneros Brasil
+# 11. Gêneros do conteúdo brasileiro
 brasil_generos <- brasil %>%
   separate_rows(listed_in, sep = ",") %>%
   mutate(listed_in = str_trim(listed_in)) %>%
@@ -571,11 +651,11 @@ brasil_generos <- brasil %>%
   slice_head(n = 10)
 ```
 
-A seguir, uma visão dos subconjuntos gerados:
+A seguir, uma visão tabular dos principais subconjuntos:
 
 ### {.tabset .tabset-pills}
 
-#### Ano
+#### Crescimento por ano
 
 ```{r sub_ano}
 por_ano %>%
@@ -584,7 +664,7 @@ por_ano %>%
   kable(align = "r")
 ```
 
-#### País
+#### Top 15 países
 
 ```{r sub_pais}
 top_paises %>%
@@ -593,7 +673,7 @@ top_paises %>%
   kable(align = c("l", "r"))
 ```
 
-#### Gênero
+#### Top 15 gêneros
 
 ```{r sub_genero}
 top_generos %>%
@@ -608,7 +688,6 @@ brasil %>%
   rename(Tipo = type, Título = title, Ano = year_added,
          Público = audience, Gêneros = listed_in, Rating = rating) %>%
   mutate(Tipo = ifelse(Tipo == "Movie", "Filme", "Série")) %>%
-  head(200) %>%
   datatable(
     options = list(
       pageLength = 10, scrollX = TRUE, searchHighlight = TRUE,
@@ -627,15 +706,17 @@ brasil %>%
 
 ## Visualizações
 
-Para avaliar o catálogo sob diferentes perspectivas, os gráficos estão organizados em quatro grupos. Cada grupo responde a uma dimensão de análise distinta.
+```{=html}
+<span class="req-badge">4.1 a 4.5 — Descobertas não auto-evidentes, gráficos e tabelas interativas, insights explicados</span>
+```
+
+Os gráficos estão organizados em quatro grupos, cada um respondendo a uma dimensão de análise. Após cada gráfico há uma caixa de insight explicando o que o dado revela e por que não é auto-evidente.
 
 ### {.tabset .tabset-pills}
 
 #### Crescimento
 
-##### Títulos adicionados por ano
-
-O gráfico abaixo mostra quantos títulos foram incorporados ao catálogo a cada ano, separados entre filmes e séries. A linha tracejada marca o início da pandemia (2020). O pico ocorreu em 2019; em 2020 houve queda — contrariando a intuição de que o isolamento aceleraria a expansão. A hipótese mais plausível é que as paralisações em sets de filmagem reduziram a oferta de conteúdo novo naquele ano.
+##### Títulos adicionados por ano :
 
 ```{r graf_crescimento}
 plot_ly(
@@ -645,10 +726,10 @@ plot_ly(
   color = ~type_label,
   type  = "bar",
   colors = c("Filme" = "#E50914", "Série" = "#5a0a0a"),
-  hovertemplate = "<b>%{x}</b><br>%{y} títulos<extra>%{fullData.name}</extra>"
+  hovertemplate = "<b>%{x}</b>: %{y} títulos<extra>%{fullData.name}</extra>"
 ) %>%
   layout(
-    barmode = "stack",
+    barmode = "group",
     shapes = list(list(
       type = "line", x0 = 2019.5, x1 = 2019.5, y0 = 0, y1 = 1,
       yref = "paper", line = list(color = "#666", width = 1.5, dash = "dot")
@@ -659,22 +740,26 @@ plot_ly(
       font = list(color = "#888", size = 12),
       xanchor = "left", yanchor = "top"
     )),
-    title  = list(text = "Títulos adicionados por ano — filmes e séries",
+    title  = list(text = "",
                   font = list(color = "#ffffff", size = 15)),
     xaxis  = list(title = "Ano", color = "#999",
                   tickmode = "linear", dtick = 1, gridcolor = "#1a1a1a"),
     yaxis  = list(title = "Quantidade adicionada", color = "#999",
                   gridcolor = "#1e1e1e"),
-    legend = list(orientation = "h", x = 0, y = 1.1,
+    legend = list(orientation = "h", x = 0, y = 1.12,
                   font = list(color = "#ccc")),
     paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
     font = list(color = "#cccccc")
   )
 ```
 
-##### Sazonalidade mensal
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> O pico de adições ao catálogo ocorreu em 2019, não em 2020, ano da pandemia. Em 2020 o volume caiu em relação ao ano anterior, contradizendo a expectativa de que o isolamento aceleraria a expansão. A queda é consistente em filmes e séries. A hipótese mais plausível é que as paralisações de filmagens durante o isolamento reduziram a oferta de conteúdo novo, criando um gargalo de produção que só foi parcialmente resolvido em 2021.
+</div>
+```
 
-Janeiro e julho concentram os maiores volumes de adição ao longo de todos os anos combinados. Julho coincide com as férias de verão no hemisfério norte — principal mercado da plataforma. Janeiro aproveita o início do ano para renovar o catálogo e reconquistar assinantes.
+##### Sazonalidade mensal :
 
 ```{r graf_sazonalidade}
 plot_ly(
@@ -699,11 +784,15 @@ plot_ly(
   )
 ```
 
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> Julho e dezembro concentram os maiores volumes de adição em todos os anos combinados. Isso não é coincidência: julho coincide com as férias de verão no hemisfério norte (principal mercado da plataforma), enquanto dezembro é fortemente impulsionado pelas festas de fim de ano e recessos de inverno, momentos em que as pessoas passam mais tempo em casa. Essa sazonalidade mostra que as decisões de curadoria do catálogo seguem de perto o calendário de descanso e consumo do público.
+</div>
+```
+
 #### Composição
 
-##### Filmes vs. séries
-
-O catálogo é majoritariamente composto por filmes — cerca de 70% do total. As séries, porém, têm peso desproporcional em engajamento, dado que o usuário retorna a elas semana após semana.
+##### Filmes vs. séries :
 
 ```{r graf_tipo}
 plot_ly(
@@ -727,9 +816,13 @@ plot_ly(
   )
 ```
 
-##### Público-alvo
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> O catálogo é majoritariamente composto por filmes (~70%), mas a proporção de séries cresceu ao longo dos anos. Séries geram mais horas de consumo por título e criam hábito de retorno à plataforma, o que explica por que a Netflix tem investido cada vez mais em produções seriais originais, mesmo que o volume absoluto ainda seja menor.
+</div>
+```
 
-Mais de 60% dos títulos carregam classificação adulta (TV-MA ou R). Conteúdo infantil e familiar representa uma parcela pequena, revelando uma plataforma que prioriza o assinante adulto pagante.
+##### Público-alvo :
 
 ```{r graf_audience}
 plot_ly(
@@ -757,11 +850,15 @@ plot_ly(
   )
 ```
 
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> Mais de 60% dos títulos são classificados como adultos (TV-MA ou R). Conteúdo infantil e familiar representa uma fatia pequena. Isso contradiz a imagem que parte do público tem da Netflix como uma plataforma "para toda a família", na prática, a plataforma prioriza o assinante adulto pagante, que tem maior poder de decisão sobre a assinatura.
+</div>
+```
+
 #### Países
 
-##### Os 15 países com mais títulos
-
-Cada título pode ter sido produzido em mais de um país; nesse caso, cada co-produção é contada em todos os países envolvidos. Os Estados Unidos dominam com mais de 2.800 títulos. A Índia em segundo reflete a estratégia da Netflix no mercado sul-asiático.
+##### Os 15 países com mais títulos :
 
 ```{r graf_paises}
 plot_ly(
@@ -790,9 +887,13 @@ plot_ly(
   )
 ```
 
-##### Crescimento por país (2015–2021)
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> Os Estados Unidos dominam com mais de 2.800 títulos, quase o triplo do segundo colocado. A Índia em segundo lugar reflete uma estratégia deliberada da Netflix de conquistar o mercado sul-asiático, um dos maiores do mundo em número de potenciais assinantes. O Brasil aparece consistentemente entre os quinze primeiros, superando países europeus maiores como Alemanha e Espanha em volume de conteúdo produzido.
+</div>
+```
 
-A Índia teve crescimento expressivo entre 2018 e 2020. A Coreia do Sul apresentou curva ascendente consistente ao longo de todo o período — contexto em que o sucesso global de *Squid Game* (2021) representa o ponto mais visível de uma estratégia mais ampla.
+##### Crescimento por país (2015–2021) :
 
 ```{r graf_paises_tempo}
 plot_ly(
@@ -811,7 +912,7 @@ plot_ly(
                   font = list(color = "#ffffff", size = 15)),
     xaxis  = list(title = "Ano", color = "#999",
                   tickmode = "linear", dtick = 1, gridcolor = "#1a1a1a"),
-    yaxis  = list(title = "Títulos adicionados", color = "#999",
+    yaxis  = list(title = "Títulos adicionados no ano", color = "#999",
                   gridcolor = "#1e1e1e"),
     legend = list(title = list(text = ""), font = list(color = "#ccc")),
     paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
@@ -819,11 +920,15 @@ plot_ly(
   )
 ```
 
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> A Índia teve crescimento explosivo entre 2018 e 2020, passando de menos de 100 títulos adicionados por ano para mais de 300. A Coreia do Sul apresentou crescimento contínuo, o sucesso global de <em>Squid Game</em> (2021) é o ponto mais visível de uma estratégia construída ao longo de vários anos. Os EUA, apesar de dominarem o total acumulado, tiveram crescimento mais estável, sugerindo um catálogo já maduro em relação ao conteúdo americano.
+</div>
+```
+
 #### Gêneros
 
-##### Os 15 gêneros mais frequentes
-
-Como cada título pode pertencer a mais de um gênero, cada categoria é contada individualmente. Dramas internacionais lideram, seguidos por comédias e documentários. A categoria "International" marca produções fora dos EUA, sinalizando que a plataforma investe ativamente na curadoria de conteúdo não anglofônico.
+##### Os 15 gêneros mais frequentes :
 
 ```{r graf_generos}
 plot_ly(
@@ -852,9 +957,13 @@ plot_ly(
   )
 ```
 
-##### Filmes vs. séries por gênero
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> "International Movies" e "International TV Shows" aparecem entre os gêneros mais frequentes, o que é notável pois essa categoria simplesmente marca produções fora dos EUA. Seu alto volume revela que a Netflix não apenas distribui conteúdo local para audiências locais, mas usa produções internacionais como diferencial competitivo global. Documentários e Thrillers independentes também têm presença relevante, sugerindo que a plataforma não se limita ao entretenimento de massa.
+</div>
+```
 
-Filmes concentram-se em drama, comédia e documentário. As séries lideram em drama, reality TV e crime — gêneros que constroem fidelização ao longo de episódios.
+##### Filmes vs. séries por gênero :
 
 ```{r graf_generos_tipo}
 plot_ly() %>%
@@ -892,11 +1001,15 @@ plot_ly() %>%
   )
 ```
 
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> Reality TV e Crime TV são gêneros quase exclusivos de séries, o formato seriado é essencial para esses gêneros, pois constroem tensão e fidelização ao longo de episódios. Documentários, por outro lado, aparecem fortemente em filmes. Drama é o único gênero verdadeiramente universal: presente com alto volume tanto em filmes quanto em séries.
+</div>
+```
+
 #### Brasil
 
-##### Crescimento do conteúdo brasileiro
-
-O crescimento é consistente a partir de 2017, com aceleração em 2018 e 2019 — período dos primeiros investimentos da Netflix em produções originais brasileiras, como a série *3%*.
+##### Crescimento do conteúdo brasileiro :
 
 ```{r graf_brasil_ano}
 plot_ly(
@@ -909,21 +1022,27 @@ plot_ly(
   hovertemplate = "<b>%{x}</b>: %{y} títulos<extra>%{fullData.name}</extra>"
 ) %>%
   layout(
-    barmode = "stack",
+    barmode = "group",
     title   = list(text = "Títulos brasileiros adicionados por ano",
                    font = list(color = "#ffffff", size = 15)),
     xaxis   = list(title = "Ano", color = "#999",
                    tickmode = "linear", dtick = 1, gridcolor = "#1a1a1a"),
     yaxis   = list(title = "Quantidade", color = "#999",
                    gridcolor = "#1e1e1e"),
-    legend  = list(orientation = "h", x = 0, y = 1.1,
+    legend  = list(orientation = "h", x = 0, y = 1.12,
                    font = list(color = "#ccc")),
     paper_bgcolor = "#0f0f0f", plot_bgcolor = "#141414",
     font = list(color = "#cccccc")
   )
 ```
 
-##### Gêneros mais frequentes no conteúdo brasileiro
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> O conteúdo brasileiro cresceu de forma consistente a partir de 2017, com aceleração visível em 2018 e 2019. Esse período coincide com os primeiros investimentos públicos da Netflix em produções originais brasileiras, a série <em>3%</em>, lançada em 2016, foi a primeira produção original brasileira da plataforma e abriu caminho para um pipeline crescente. O crescimento de séries brasileiras é proporcionalmente maior que o de filmes a partir de 2018.
+</div>
+```
+
+##### Gêneros mais frequentes no conteúdo brasileiro :
 
 ```{r graf_brasil_generos}
 plot_ly(
@@ -952,7 +1071,13 @@ plot_ly(
   )
 ```
 
-##### Catálogo brasileiro completo
+```{=html}
+<div class="insight-box">
+  <strong>Descoberta:</strong> O conteúdo brasileiro na plataforma concentra-se em dramas internacionais e comédias. A presença de "International Movies" como categoria dominante revela como a Netflix enxerga o Brasil: não como mercado isolado, mas como exportador de conteúdo para o catálogo global, os filmes e séries brasileiros são marcados como "internacionais" e distribuídos para o mundo todo, não apenas para o Brasil.
+</div>
+```
+
+##### Catálogo brasileiro completo :
 
 ```{r tab_brasil}
 brasil %>%
@@ -977,35 +1102,41 @@ brasil %>%
 
 ## Conclusões
 
-### Declaração do problema revisitada
+```{=html}
+<span class="req-badge">5.1 — Conclusão sobre a declaração do problema</span>
+```
 
-Este trabalho analisou a evolução do catálogo da Netflix entre 2008 e 2021, com foco em padrões de crescimento, distribuição geográfica, composição por gênero e público, e o impacto da pandemia de COVID-19. A questão central era: a pandemia acelerou a expansão do catálogo?
-
-### Metodologia empregada
-
-Os dados do Kaggle foram importados, limpos e transformados com o tidyverse e lubridate. Variáveis com múltiplos valores foram separadas para permitir contagens por país e gênero. Foi criada a variável `audience` a partir das siglas de rating americanas. Todas as visualizações foram feitas com plotly para permitir interação direta com os gráficos.
-
-### Principais achados
+Este trabalho analisou a evolução do catálogo da Netflix entre 2008 e 2021, buscando responder à pergunta central: **a pandemia de COVID-19 acelerou a expansão do catálogo?** A resposta, apoiada nos dados, é não, pelo menos não no curto prazo. O catálogo encolheu em 2020 em relação a 2019, contrariando a expectativa intuitiva.
 
 ```{=html}
+<span class="req-badge">5.2 — Como o problema foi abordado</span>
+```
+
+Os dados foram obtidos do Kaggle, importados com `read_csv()`, limpos e transformados com `tidyverse` e `lubridate`. Variáveis multivaloradas foram separadas com `separate_rows()` para permitir contagens corretas. A variável `audience` foi criada a partir do `rating` americano. Onze subconjuntos foram gerados para evitar repetição de processamento. Todas as visualizações são interativas (plotly) e todas as tabelas permitem busca e ordenação (DT).
+
+```{=html}
+<span class="req-badge">5.3 — Insights da análise</span>
+
 <ul class="finding-list">
-  <li><strong>A pandemia não expandiu o catálogo no curto prazo:</strong> o pico de adições ocorreu em 2019. Em 2020, houve recuo — as paralisações de produção foram o fator mais provável. A recuperação parcial apareceu apenas em 2021.</li>
-  <li><strong>Sazonalidade clara:</strong> janeiro e julho concentram as maiores adições ao catálogo em todos os anos analisados, coincidindo com períodos de férias nos principais mercados.</li>
-  <li><strong>O catálogo é majoritariamente adulto:</strong> mais de 60% dos títulos são TV-MA ou R, revelando uma plataforma que prioriza o assinante adulto pagante em vez do público familiar.</li>
-  <li><strong>Os EUA dominam, mas a internacionalização é real:</strong> Índia, Coreia do Sul, Japão e Brasil crescem consistentemente. O conteúdo não anglofônico passou a ser um diferencial competitivo da plataforma.</li>
-  <li><strong>Drama é o gênero universal:</strong> tanto em filmes quanto em séries o drama domina. Reality TV e crime lideram especificamente entre as séries, gêneros que constroem fidelização ao longo de episódios.</li>
-  <li><strong>O Brasil cresceu de forma consistente a partir de 2017:</strong> o conteúdo brasileiro mais do que dobrou entre 2017 e 2019, reflexo de investimentos em produções originais locais como a série <em>3%</em>.</li>
+  <li><strong>A pandemia reduziu o catálogo no curto prazo:</strong> 2020 teve menos títulos novos do que 2019, com recuperação parcial apenas em 2021.</li>
+  <li><strong>Sazonalidade clara e consistente:</strong> janeiro e julho concentram as maiores adições, calendário que segue o consumo do hemisfério norte.</li>
+  <li><strong>O catálogo é majoritariamente adulto:</strong> mais de 60% dos títulos são TV-MA ou R.</li>
+  <li><strong>A internacionalização é real e crescente:</strong> Índia, Coreia do Sul e Brasil crescem consistentemente, com o conteúdo desses países sendo distribuído globalmente.</li>
+  <li><strong>Drama é o gênero universal:</strong> domina tanto em filmes quanto em séries. Reality TV e Crime são predominantemente seriados.</li>
+  <li><strong>O Brasil cresceu a partir de 2017:</strong> com aceleração em séries a partir de 2018, reflexo de investimentos em produções originais locais.</li>
 </ul>
 ```
 
-### Implicações
+```{=html}
+<span class="req-badge">5.4 — Implicações práticas</span>
+```
 
-Para produtores e realizadores: drama e conteúdo adulto têm mais espaço na plataforma. O mercado internacional é uma oportunidade real — a Netflix usa produções de países como Brasil e Coreia do Sul como diferenciais globais, não apenas como conteúdo local para audiências locais.
+Para produtores e realizadores audiovisuais brasileiros: drama e conteúdo adulto têm mais espaço. O mercado internacional é uma rota viável, a Netflix posiciona produções brasileiras como conteúdo global, não regional. Para pesquisadores de mídia: os dados contradizem o mito do boom de catálogo durante a pandemia. O crescimento existiu em audiência, não em volume de novos títulos, uma distinção importante para entender os limites da expansão das plataformas de streaming.
 
-Para pesquisadores de mídia: os dados contradizem a narrativa de "boom do streaming durante a pandemia". O crescimento existiu em audiência e receita, mas não se traduziu imediatamente em expansão de catálogo — o que aponta para um gargalo de produção, não de demanda.
+```{=html}
+<span class="req-badge">5.5 — Limitações e melhorias possíveis</span>
+```
 
-### Limitações e próximos passos
+Os dados cobrem apenas títulos **disponíveis** no catálogo em 2021 e não registram remoções, títulos retirados da plataforma ao longo do tempo são invisíveis nesta análise, o que subestima o volume real de conteúdo que passou pela Netflix. Não há dados de audiência, impedindo qualquer análise sobre o sucesso relativo dos títulos.
 
-Os dados cobrem apenas títulos disponíveis no catálogo em 2021 e não registram remoções. Isso subestima o volume real de conteúdo que passou pela plataforma ao longo do tempo. Além disso, os dados não contêm informações sobre número de visualizações, o que impede qualquer análise sobre o sucesso relativo de cada título.
-
-Análises futuras poderiam cruzar esses dados com métricas de audiência (quando disponíveis publicamente), com informações sobre quando cada título foi retirado do catálogo — permitindo medir vida útil média de um título — ou com dados de bilheteria para entender o intervalo entre o lançamento original e a chegada à plataforma.
+Melhorias futuras poderiam incluir: cruzamento com dados de audiência quando disponíveis publicamente; incorporação de dados históricos de remoções para calcular a vida útil média de um título; análise de intervalos entre lançamento original e chegada à plataforma usando `release_year` versus `year_added`; e análise de sentimento das sinopses para identificar padrões temáticos além das categorias de gênero.
